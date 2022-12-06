@@ -3,6 +3,7 @@ import "./style.css";
 export const Menu = () => {
   const element = document.createElement("section");
   element.classList.add("menu");
+  element.setAttribute("id", "menu");
 
   element.innerHTML = `
 

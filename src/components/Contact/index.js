@@ -2,6 +2,7 @@ import "./style.css";
 
 export const Contact = () => {
   const element = document.createElement("section");
+  element.setAttribute("id", "contact");
 
   element.innerHTML = `
   <div class="container">
