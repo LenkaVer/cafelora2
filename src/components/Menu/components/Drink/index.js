@@ -1,5 +1,7 @@
 import "./style.css";
 
+import { Layer } from "../Layer/index.js";
+
 export const Drink = (props) => {
   const element = document.createElement("div");
   element.classList.add("drink");
@@ -22,7 +24,7 @@ export const Drink = (props) => {
   //     ]
   //   };
 
-  const { id, name, ordered, image, layers } = props;
+  const { id, name, ordered, image } = props;
 
   element.innerHTML = `
         <div class="drink__product">
@@ -31,10 +33,6 @@ export const Drink = (props) => {
           </div>
           <div class="drink__info">
             <h3>${name}</h3>
-            <div class="layer">
-              <div class="layer__color" style="background-color: #613916"></div>
-              <div class="layer__label">espresso</div>
-            </div>
           </div>
         </div>
         <div class="drink__controls">
@@ -43,6 +41,17 @@ export const Drink = (props) => {
           </button>
         </div>
   `;
+
+  element.querySelector(".drink__info").append(
+    Layer({
+      color: "#fff",
+      label: "mléko",
+    }),
+    Layer({
+      color: "#964B00",
+      label: "expresso",
+    })
+  );
 
   return element;
 };
