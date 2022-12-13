@@ -1,17 +1,12 @@
 import "./style.css";
-import { Banner } from "./components/Banner/index.js";
-import { Contact } from "./components/Contact/index.js";
-import { Footer } from "./components/Footer/index.js";
-import { Gallery } from "./components/Gallery/index.js";
-import { Header } from "./components/Header/index.js";
-import { Menu } from "./components/Menu/index.js";
 
-const pageElement = document.createElement("div");
-pageElement.classList.add("page");
+import { HomePage } from "./pages/HomePage/index.js";
+import { OrderPage } from "./pages/OrderPage/index.js";
 
-const main = document.createElement("main");
-main.append(Banner(), Menu({}), Gallery(), Contact());
+const { pathname } = window.location;
 
-pageElement.append(Header(), main, Footer());
-
-document.querySelector("#app").append(pageElement);
+if (pathname === "/") {
+  document.querySelector("#app").append(HomePage());
+} else if (pathname === "/objednavka") {
+  document.querySelector("#app").append(OrderPage());
+}
