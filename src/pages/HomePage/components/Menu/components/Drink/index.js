@@ -42,7 +42,7 @@ export const Drink = (props) => {
   //       }
   //   };
 
-  const { id, name, ordered, image } = props;
+  const { id, name, ordered, image, layers } = props;
 
   element.innerHTML = `
         <div class="drink__product">
@@ -78,16 +78,20 @@ export const Drink = (props) => {
       .then((data) => element.replaceWith(Drink(data.results)));
   });
 
-  element.querySelector(".drink__info").append(
-    Layer({
-      color: "#fff",
-      label: "mléko",
-    }),
-    Layer({
-      color: "#964B00",
-      label: "expresso",
-    })
-  );
+  // element.querySelector(".drink__info").append(
+  //   Layer({
+  //     color: "#fff",
+  //     label: "mléko",
+  //   }),
+  //   Layer({
+  //     color: "#964B00",
+  //     label: "expresso",
+  //   })
+  // );
+
+  element
+    .querySelector(".drink__info")
+    .append(...layers.map((layer) => Layer(layer)));
 
   return element;
 };
